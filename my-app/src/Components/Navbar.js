@@ -1,60 +1,69 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
-<nav className={`navbar navbar-expand navbar-${props.mode} bg-${props.mode}`}> 
-  <div className="container-fluid">
-        <Link className="navbar-brand mb-2" to="/">{props.title}</Link>
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarSupportedContent" 
-          aria-controls="navbarSupportedContent" 
-          aria-expanded="false" 
+    <nav
+      className={`navbar navbar-expand navbar-${props.mode} bg-${props.mode}`}
+    >
+      <div className="container-fluid">
+        <Link className="navbar-brand mb-2" to="/">
+          {props.title}
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">{props.homeText}</Link>
+              <Link className="nav-link active" aria-current="page" to="/">
+                {props.homeText}
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">{props.aboutText}</Link>
+              <Link className="nav-link" to="/about">
+                {props.aboutText}
+              </Link>
             </li>
-           </ul>
+          </ul>
         </div>
         <div className="form-check form-switch">
-  <input
-    className="form-check-input"
-    type="checkbox"
-    role="switch"
-    id="darkModeSwitch"
-    onClick={props.toggleMode}
-  />
-  <label className={`mb-2 form-check-label text-${props.mode === "dark" ? "light" : "dark"}`} htmlFor="darkModeSwitch">
-    Dark Mode
-  </label>
-</div>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="darkModeSwitch"
+            onClick={props.toggleMode}
+          />
+          <label
+            className={`mb-2 form-check-label text-${props.mode === "dark" ? "light" : "dark"}`}
+            htmlFor="darkModeSwitch"
+          >
+            Dark Mode
+          </label>
+        </div>
       </div>
-
     </nav>
-  )
+  );
 }
 
 Navbar.propTypes = {
-  title : PropTypes.string,
-  aboutText: PropTypes.string
-}
-
+  title: PropTypes.string,
+  aboutText: PropTypes.string,
+};
 
 // Its not Supporting in React 19 (New Version)
 Navbar.defaultProps = {
-  title : "Utils",
-  aboutText : "About"
+  title: "Utils",
+  aboutText: "About",
 };
