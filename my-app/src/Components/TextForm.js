@@ -6,10 +6,13 @@ export default function TextForm(props) {
 
   const handleUpClick = () => {
     setResult(text.toUpperCase());
+    props.showAlert("Converted Into Upper Case ", "success");
   };
 
   const handleLoClick = () => {
     setResult(text.toLowerCase());
+    
+    props.showAlert("Converted Into Lower Case ", "success");
   };
 
   const handleOnChange = (event) => {
@@ -24,21 +27,28 @@ export default function TextForm(props) {
       .join(" ");
 
     setResult(newText);
+    
+    props.showAlert("Converted Into Title Case ", "success");
   };
 
   const handleSnClick = () => {
     setResult(text.replaceAll(" ", "_"));
+    
+    props.showAlert("Converted Into Snake Case ", "success");
   };
 
   const handleClrClick = () => {
     setText("");
     setResult("");
+    
+    props.showAlert("Cleared Text ", "success");
   };
 
   return (
     <>
-      <div className="container">
-        <br />
+<div
+  className="container">    
+      <br />
 
         <h1 className="text-center text-primary fw-bold my-4">
           {props.heading}
@@ -50,7 +60,12 @@ export default function TextForm(props) {
           onChange={handleOnChange}
           value={text}
           placeholder="Enter Text Here"
-          rows="8"
+          rows="5"
+          required={true}
+          style={{
+    color: props.mode === "dark" ? "white" : "black",
+    backgroundColor: props.mode === "dark" ? "grey" : "white"
+  }}
         />
 
         <br />
@@ -112,7 +127,11 @@ export default function TextForm(props) {
           className="form-control border-2"
           value={result}
           readOnly
-          rows="8"
+          rows="5"
+          style={{
+    color: props.mode === "dark" ? "white" : "black",
+    backgroundColor: props.mode === "dark" ? "grey" : "white"
+  }}
         />
       </div>
     </>
