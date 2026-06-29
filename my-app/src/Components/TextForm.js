@@ -11,7 +11,7 @@ export default function TextForm(props) {
 
   const handleLoClick = () => {
     setResult(text.toLowerCase());
-    
+
     props.showAlert("Converted Into Lower Case ", "success");
   };
 
@@ -27,32 +27,31 @@ export default function TextForm(props) {
       .join(" ");
 
     setResult(newText);
-    
+
     props.showAlert("Converted Into Title Case ", "success");
   };
 
   const handleSnClick = () => {
     setResult(text.replaceAll(" ", "_"));
-    
+
     props.showAlert("Converted Into Snake Case ", "success");
   };
 
   const handleClrClick = () => {
     setText("");
     setResult("");
-    
+
     props.showAlert("Cleared Text ", "success");
   };
 
   return (
     <>
-<div
-  className="container">    
-      <br />
+      <div className="container" style={{ overflow: "hidden" }}>
+        <br />
 
-        <h1 className="text-center text-primary fw-bold my-4">
+        <h2 className="text-center text-primary fw-bold my-4">
           {props.heading}
-        </h1>
+        </h2>
 
         {/* Input Text Area */}
         <textarea
@@ -63,43 +62,42 @@ export default function TextForm(props) {
           rows="5"
           required={true}
           style={{
-    color: props.mode === "dark" ? "white" : "black",
-    backgroundColor: props.mode === "dark" ? "grey" : "white"
-  }}
+            backgroundColor: props.mode === "dark" ? "#BFC9D1" : "white",
+          }}
         />
 
         <br />
 
         <div className="d-flex gap-2 flex-wrap">
-          <button
+          <button disabled={text.length === 0}
             className="btn btn-secondary me-3 flex-fill"
             onClick={handleLoClick}
           >
             LowerCase
           </button>
 
-          <button
+          <button disabled={text.length === 0}
             className="btn btn-secondary me-3 flex-fill"
             onClick={handleUpClick}
           >
             Uppercase
           </button>
 
-          <button
+          <button disabled={text.length === 0}
             className="btn btn-secondary me-3 flex-fill"
             onClick={handleTilClick}
           >
             TitleCase
           </button>
 
-          <button
+          <button disabled={text.length === 0}
             className="btn btn-secondary me-3 flex-fill"
             onClick={handleSnClick}
           >
             SnakeCase
           </button>
 
-          <button
+          <button disabled={text.length === 0}
             className="btn btn-secondary me-3 flex-fill"
             onClick={handleClrClick}
           >
@@ -129,12 +127,10 @@ export default function TextForm(props) {
           readOnly
           rows="5"
           style={{
-    color: props.mode === "dark" ? "white" : "black",
-    backgroundColor: props.mode === "dark" ? "grey" : "white"
-  }}
+            backgroundColor: props.mode === "dark" ? "#BFC9D1" : "white",
+          }}
         />
       </div>
     </>
   );
 }
-
